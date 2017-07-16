@@ -50,7 +50,7 @@ p customer3.how_much_tickets
 
 p film2.how_mush_customer
 
-customer3.buy_a_ticket
+customer2.buy_a_ticket
 
 
 binding.pry
