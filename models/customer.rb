@@ -50,10 +50,9 @@ class Customer
 
   def buy_a_ticket
       for film in booked_films()
-       funds_left = @funds -=film.price.to_i
+       funds_left = @funds -= film.price.to_i
       end
       # How can i update the db with the result
-      # return "#{funds_left}£ left in your wallet"
     sql = "UPDATE customers SET name = '#{@name}', funds = #{funds_left} WHERE id = #{@id}"
     SqlRunner.run(sql)
   end
