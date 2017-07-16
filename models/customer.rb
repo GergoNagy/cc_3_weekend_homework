@@ -1,5 +1,7 @@
 require('pg')
 require_relative('../db/sql_runner')
+require_relative('./film')
+require_relative('./ticket')
 
 class Customer
 
@@ -25,7 +27,7 @@ class Customer
     SqlRunner.run(sql)
   end
 
-  def find_a_customer
+  def find_a_customer()
     sql = "SELECT customers.name, customers.funds 
         FROM customers WHERE id = #{id}"
     customers = SqlRunner.run(sql)
@@ -35,6 +37,15 @@ class Customer
   def delete_customer()
     sql = "DELETE FROM customers WHERE id = #{@id}"
     SqlRunner.run(sql)
+  end
+
+  def booked_films()
+    sql = "SELECT films.* FROM films
+        INNER JOIN tickets ON tickets.film_id = films.id
+        WHERE customer_id = #{@id}"
+    films = SqlRunner.run(sql)
+    result = films.map {|film| Film.new(film)}
+    return result
   end
 
   def self.delete_all()
