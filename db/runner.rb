@@ -29,7 +29,7 @@ film2.save
 film3.save
 p film3.find_film
 film2.title = "Terminator 2"
-film2.price = 1
+film2.price = 10
 film2.update
 # film3.delete_film
 
@@ -44,7 +44,13 @@ p ticket1.find_ticket
 # ticket1.delete_ticket
 
 p film1.customers
-p customer2.booked_films
+p customer3.booked_films
+
+p customer3.how_much_tickets
+
+p film2.how_mush_customer
+
+# p customer3.buy_a_ticket
 
 
 binding.pry

@@ -48,6 +48,17 @@ class Customer
     return result
   end
 
+  def buy_a_ticket
+    films = booked_films()
+      for film in films
+        @funds -=film.price.to_i
+      end
+    end
+
+  def how_much_tickets
+    return booked_films().count
+  end
+
   def self.delete_all()
     sql = "DELETE FROM customers"
     SqlRunner.run(sql)

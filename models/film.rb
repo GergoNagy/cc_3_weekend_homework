@@ -44,6 +44,10 @@ class Film
     return result
   end
 
+  def how_mush_customer
+    customers().count
+  end
+
 
 
   def self.delete_all
