@@ -23,7 +23,7 @@ class Customer
   end
 
   def update()
-    sql = "UPDATE customers SET name = '#{@name}', funds = #{funds} WHERE id = #{@id}"
+    sql = "UPDATE customers SET name = '#{@name}', funds = #{@funds} WHERE id = #{@id}"
     SqlRunner.run(sql)
   end
 
@@ -51,8 +51,12 @@ class Customer
   def buy_a_ticket
     films = booked_films()
       for film in films
-        @funds -=film.price.to_i
+       funds_left = @funds -=film.price.to_i
       end
+      # How can i update the db with the result
+      # return "#{funds_left}£ left in your wallet"
+      sql = "UPDATE customers SET name = '#{@name}', funds = #{funds_left} WHERE id = #{@id}"
+      SqlRunner.run(sql)
     end
 
   def how_much_tickets
